@@ -137,6 +137,7 @@ router.get("/feed", auth.required, function(req, res, next) {
   });
 });
 
+//post an item
 router.post("/", auth.required, function(req, res, next) {
   User.findById(req.payload.id)
     .then(function(user) {
@@ -145,6 +146,10 @@ router.post("/", auth.required, function(req, res, next) {
       }
 
       var item = new Item(req.body.item);
+
+      if(!item.image){
+        item.image = "/placeholder.png"
+      }
 
       item.seller = user;
 
