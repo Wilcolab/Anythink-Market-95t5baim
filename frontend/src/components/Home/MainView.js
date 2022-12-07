@@ -58,6 +58,7 @@ const TagFilterTab = (props) => {
   );
 };
 
+//connect state to component MainView (in props)
 const mapStateToProps = (state) => ({
   ...state.itemList,
   tags: state.home.tags,
@@ -69,6 +70,7 @@ const mapDispatchToProps = (dispatch) => ({
     dispatch({ type: CHANGE_TAB, tab, pager, payload }),
 });
 
+//TODO: manage tab correctly including filter
 const MainView = (props) => {
   return (
     <div>
@@ -92,6 +94,7 @@ const MainView = (props) => {
         loading={props.loading}
         itemsCount={props.itemsCount}
         currentPage={props.currentPage}
+        title={props.title}
       />
     </div>
   );

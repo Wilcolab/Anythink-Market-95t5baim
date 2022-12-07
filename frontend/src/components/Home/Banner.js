@@ -34,11 +34,14 @@ const Banner = (props) => {
       <div className="container p-4 text-center">
         <img src={logo} alt="banner" />
         <div>
-          <span>A Place to </span>
-          <span id="get-part">get </span>
+          <span className="bannerTextDiv">A Place to </span>
+          <span className="bannerTextDiv" id="get-part">
+            get{" "}
+          </span>
 
           <input
             // className="form-control form-control-lg"
+            className="bannerTextDiv"
             type="search"
             id="search-box"
             placeholder=" What is it that you truly desire ?"
@@ -46,7 +49,7 @@ const Banner = (props) => {
             onChange={onChangeHandleTitle}
           />
 
-          <span> the cool stuff</span>
+          <span className="bannerTextDiv"> the cool stuff.</span>
         </div>
       </div>
     </div>
