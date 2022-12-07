@@ -24,7 +24,7 @@ const Banner = (props) => {
     }
 
     //like a new word after
-    if (inputTitle.length == 0) {
+    if (inputTitle.length === 0) {
       setCountInput(0);
     }
   };
