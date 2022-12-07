@@ -5,6 +5,7 @@ import agent from "../../agent";
 const Banner = (props) => {
   const [input, setInput] = React.useState("");
   const [countInput, setCountInput] = React.useState(0);
+  const [show, setShow] = React.useState(false);
 
   const onChangeHandleTitle = (ev) => {
     ev.preventDefault();
@@ -29,26 +30,34 @@ const Banner = (props) => {
     }
   };
 
+  const onShowSearchBox = () => {
+    setShow(!show);
+  };
+
   return (
     <div className="banner text-white">
       <div className="container p-4 text-center">
         <img src={logo} alt="banner" />
         <div>
           <span className="bannerTextDiv">A Place to </span>
-          <span className="bannerTextDiv" id="get-part">
+          <span
+            className="bannerTextDiv"
+            id="get-part"
+            onClick={onShowSearchBox}
+          >
             get{" "}
           </span>
 
-          <input
-            // className="form-control form-control-lg"
-            className="bannerTextDiv"
-            type="search"
-            id="search-box"
-            placeholder=" What is it that you truly desire ?"
-            value={input}
-            onChange={onChangeHandleTitle}
-          />
-
+          {show && (
+            <input
+              className="bannerTextDiv"
+              type="search"
+              id="search-box"
+              placeholder=" What is it that you truly desire ?"
+              value={input}
+              onChange={onChangeHandleTitle}
+            />
+          )}
           <span className="bannerTextDiv"> the cool stuff.</span>
         </div>
       </div>
