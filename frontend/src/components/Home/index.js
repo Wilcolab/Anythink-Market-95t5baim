@@ -50,9 +50,7 @@ class Home extends React.Component {
   render() {
     return (
       <div className="home-page">
-        <Banner
-          onChangeHandleTitle={this.props.onChangeHandleTitle}
-        />
+        <Banner onChangeHandleTitle={this.props.onChangeHandleTitle} />
 
         <div className="container page">
           <Tags tags={this.props.tags} onClickTag={this.props.onClickTag} />

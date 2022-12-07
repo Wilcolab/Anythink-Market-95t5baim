@@ -8,12 +8,12 @@ const Banner = (props) => {
 
   const onChangeHandleTitle = (ev) => {
     ev.preventDefault();
-    setCountInput(countInput+1);
+    setCountInput(countInput + 1);
     const inputTitle = ev.target.value;
     setInput(ev.target.value);
-    console.log('compare', input , inputTitle, ev.target.value);
-    
-    if (countInput + 1 >= 3 ) {
+    console.log("compare", input, inputTitle, ev.target.value);
+
+    if (countInput + 1 >= 3) {
       props.onChangeHandleTitle(
         inputTitle,
         // 1 - pager
@@ -23,8 +23,8 @@ const Banner = (props) => {
       );
     }
 
-    //like a new word after 
-    if(inputTitle.length == 0){
+    //like a new word after
+    if (inputTitle.length == 0) {
       setCountInput(0);
     }
   };
