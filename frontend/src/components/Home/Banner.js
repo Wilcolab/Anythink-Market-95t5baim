@@ -50,7 +50,7 @@ const Banner = (props) => {
 
           {show && (
             <input
-              className="bannerTextDiv"
+              className="bannerTextDiv mx-1"
               type="search"
               id="search-box"
               placeholder=" What is it that you truly desire ?"
