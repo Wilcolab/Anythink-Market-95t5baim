@@ -9,7 +9,7 @@ while read id lastname firstname email price country
 # if email containt @amazon.com then
 do
     if [[ ${email,,} == *"@amazon.com"* ]]; then
-	    echo "$firstname $lastname " >> results.txt
+	    echo "$firstname $lastname " >> output_names.txt
     fi
 
 done < $INPUT
