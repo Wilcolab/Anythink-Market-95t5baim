@@ -17,7 +17,7 @@ const User = mongoose.model("User");
 //100 users, 100 products, and 100 comments.
 const createRandomUser = () => {
   return {
-    username: faker.name.firstName(),
+    username: faker.name.firstName() + "_" + faker.random.word(),
     email: faker.internet.email(),
   };
 };
