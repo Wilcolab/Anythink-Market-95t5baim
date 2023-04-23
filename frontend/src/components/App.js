@@ -12,6 +12,7 @@ import ProfileFavorites from "./ProfileFavorites";
 import Register from "./Register";
 import Settings from "./Settings";
 import { Route, Routes, useNavigate } from "react-router-dom";
+import PrivateRoute from "./PrivateRoute";
 
 const mapStateToProps = (state) => {
   return {
@@ -29,7 +30,7 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const App = (props) => {
-  const { redirectTo, onRedirect, onLoad } = props;
+  const { redirectTo, onRedirect, onLoad, currentUser } = props;
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -52,18 +53,36 @@ const App = (props) => {
       <div>
         <Header
           appName={props.appName}
-          currentUser={props.currentUser}
+          currentUser={currentUser}
         />
         <Routes>
-          <Route exact path="/" element={<Home/>} />
-          <Route path="/login" element={<Login/>} />
-          <Route path="/register" element={<Register/>} />
-          <Route path="/editor/:slug" element={<Editor/>} />
-          <Route path="/editor" element={<Editor/>} />
-          <Route path="/item/:id" element={<Item/>} />
-          <Route path="/settings" element={<Settings/>} />
-          <Route path="/:username/favorites" element={<ProfileFavorites/>} />
-          <Route path="/:username" element={<Profile/>} />
+          <Route exact path="/" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+
+
+          <Route path="/editor/:slug" element={
+            <PrivateRoute currentUser={currentUser}
+            >
+              <Editor />
+            </PrivateRoute>
+          } />
+          <Route path="/editor" element={<PrivateRoute currentUser={currentUser}
+          >
+            <Editor />
+          </PrivateRoute>} />
+          <Route path="/item/:id" element={<PrivateRoute currentUser={currentUser}
+          >
+            <Item />            </PrivateRoute>} />
+          <Route path="/settings" element={<PrivateRoute currentUser={currentUser}
+          >
+            <Settings />            </PrivateRoute>} />
+          <Route path="/:username/favorites" element={<PrivateRoute currentUser={currentUser}
+          >
+            <ProfileFavorites />            </PrivateRoute>} />
+          <Route path="/:username" element={<PrivateRoute currentUser={currentUser}
+          >
+            <Profile />            </PrivateRoute>} />
         </Routes>
       </div>
     );
@@ -72,7 +91,7 @@ const App = (props) => {
     <div>
       <Header
         appName={props.appName}
-        currentUser={props.currentUser}
+        currentUser={currentUser}
       />
     </div>
   );
