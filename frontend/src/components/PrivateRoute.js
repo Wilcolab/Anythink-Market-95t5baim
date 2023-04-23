@@ -1,9 +1,22 @@
 import React from 'react';
-import { Navigate } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 
-const PrivateRoute = ({ currentUser, children }) => {
-  return currentUser ? children : <Navigate to="/login" />;
-};
+const PrivateRoute = ({ component: Component, currentUser, ...rest }) => (
+  <Route
+    {...rest}
+    render={(props) =>
+      currentUser ? (
+        <Component {...props} />
+      ) : (
+        <Redirect
+          to={{
+            pathname: '/login',
+            //state: { from: props.location },
+          }}
+        />
+      )
+    }
+  />
+);
 
 export default PrivateRoute;
-// https://stackoverflow.com/questions/69923420/how-to-use-private-route-in-react-router-domv6
