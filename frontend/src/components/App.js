@@ -11,7 +11,8 @@ import Profile from "./Profile";
 import ProfileFavorites from "./ProfileFavorites";
 import Register from "./Register";
 import Settings from "./Settings";
-import { Route, Routes, useNavigate } from "react-router-dom";
+import { Route, Switch, useHistory } from "react-router-dom";
+import PrivateRoute from "./PrivateRoute";
 
 const mapStateToProps = (state) => {
   return {
@@ -30,14 +31,14 @@ const mapDispatchToProps = (dispatch) => ({
 
 const App = (props) => {
   const { redirectTo, onRedirect, onLoad } = props;
-  const navigate = useNavigate();
+  const history = useHistory();
 
   useEffect(() => {
     if (redirectTo) {
-      navigate(redirectTo);
+      history(redirectTo);
       onRedirect();
     }
-  }, [redirectTo, onRedirect, navigate]);
+  }, [redirectTo, onRedirect, history]);
 
   useEffect(() => {
     const token = window.localStorage.getItem("jwt");
@@ -54,17 +55,17 @@ const App = (props) => {
           appName={props.appName}
           currentUser={props.currentUser}
         />
-        <Routes>
-          <Route exact path="/" element={<Home/>} />
-          <Route path="/login" element={<Login/>} />
-          <Route path="/register" element={<Register/>} />
-          <Route path="/editor/:slug" element={<Editor/>} />
-          <Route path="/editor" element={<Editor/>} />
-          <Route path="/item/:id" element={<Item/>} />
-          <Route path="/settings" element={<Settings/>} />
-          <Route path="/:username/favorites" element={<ProfileFavorites/>} />
-          <Route path="/:username" element={<Profile/>} />
-        </Routes>
+         <Switch>
+          <Route exact path="/" component={Home}/>
+          <Route path="/login" component={Login}/>
+          <Route path="/register" component={Register}/>
+          <PrivateRoute path="/editor/:slug" currentUser={props.currentUser} component={Editor} />
+          <PrivateRoute path="/editor" currentUser={props.currentUser} component={Editor} />
+          <PrivateRoute path="/item/:id" currentUser={props.currentUser} component={Item} />
+          <PrivateRoute path="/settings" currentUser={props.currentUser} component={Settings} />
+          <PrivateRoute path="/:username/favorites" currentUser={props.currentUser} component={ProfileFavorites} />
+          <PrivateRoute path="/:username" currentUser={props.currentUser} component={Profile} />
+        </Switch>
       </div>
     );
   }
