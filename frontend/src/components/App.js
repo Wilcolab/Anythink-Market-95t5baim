@@ -61,10 +61,10 @@ const App = (props) => {
           <Route path="/register" component={Register}/>
           <PrivateRoute path="/editor/:slug" currentUser={props.currentUser} component={Editor} />
           <PrivateRoute path="/editor" currentUser={props.currentUser} component={Editor} />
-          <PrivateRoute path="/item/:id" currentUser={props.currentUser} component={Item} />
+          <Route path="/item/:id" currentUser={props.currentUser} component={Item} />
           <PrivateRoute path="/settings" currentUser={props.currentUser} component={Settings} />
-          <PrivateRoute path="/:username/favorites" currentUser={props.currentUser} component={ProfileFavorites} />
-          <PrivateRoute path="/:username" currentUser={props.currentUser} component={Profile} />
+          <Route path="/:username/favorites" currentUser={props.currentUser} component={ProfileFavorites} />
+          <Route path="/:username" currentUser={props.currentUser} component={Profile} />
         </Switch>
       </div>
     );
