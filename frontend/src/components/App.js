@@ -67,10 +67,7 @@ const App = (props) => {
               <Editor />
             </PrivateRoute>
           } />
-          <Route path="/editor" element={<PrivateRoute currentUser={currentUser}
-          >
-            <Editor />
-          </PrivateRoute>} />
+          <Route path="/editor" element={<PrivateRoute currentUser={currentUser}><Editor /></PrivateRoute>} />
           <Route path="/item/:id" element={<PrivateRoute currentUser={currentUser}
           >
             <Item />            </PrivateRoute>} />
