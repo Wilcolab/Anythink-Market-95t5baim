@@ -30,7 +30,7 @@ const mapDispatchToProps = (dispatch) => ({
 });
 
 const App = (props) => {
-  const { redirectTo, onRedirect, onLoad, currentUser } = props;
+  const { redirectTo, onRedirect, onLoad } = props;
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -53,7 +53,7 @@ const App = (props) => {
       <div>
         <Header
           appName={props.appName}
-          currentUser={currentUser}
+          currentUser={props.currentUser}
         />
         <Routes>
           <Route exact path="/" element={<Home />} />
@@ -62,22 +62,22 @@ const App = (props) => {
 
 
           <Route path="/editor/:slug" element={
-            <PrivateRoute currentUser={currentUser}
+            <PrivateRoute currentUser={props.currentUser}
             >
               <Editor />
             </PrivateRoute>
           } />
-          <Route path="/editor" element={<PrivateRoute currentUser={currentUser}><Editor /></PrivateRoute>} />
-          <Route path="/item/:id" element={<PrivateRoute currentUser={currentUser}
+          <Route path="/editor" element={<PrivateRoute currentUser={props.currentUser}><Editor /></PrivateRoute>} />
+          <Route path="/item/:id" element={<PrivateRoute currentUser={props.currentUser}
           >
             <Item />            </PrivateRoute>} />
-          <Route path="/settings" element={<PrivateRoute currentUser={currentUser}
+          <Route path="/settings" element={<PrivateRoute currentUser={props.currentUser}
           >
             <Settings />            </PrivateRoute>} />
-          <Route path="/:username/favorites" element={<PrivateRoute currentUser={currentUser}
+          <Route path="/:username/favorites" element={<PrivateRoute currentUser={props.currentUser}
           >
             <ProfileFavorites />            </PrivateRoute>} />
-          <Route path="/:username" element={<PrivateRoute currentUser={currentUser}
+          <Route path="/:username" element={<PrivateRoute currentUser={props.currentUser}
           >
             <Profile />            </PrivateRoute>} />
         </Routes>
@@ -88,7 +88,7 @@ const App = (props) => {
     <div>
       <Header
         appName={props.appName}
-        currentUser={currentUser}
+        currentUser={props.currentUser}
       />
     </div>
   );
