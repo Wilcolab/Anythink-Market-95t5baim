@@ -66,8 +66,8 @@ const App = (props) => {
           <Route path="/settings" element={<Settings />} />
           <Route path="/:username/favorites" element={<ProfileFavorites />} />
           <Route path="/:username" element={<Profile />} />
-          <Route path="/404" element={<PageNotFound />} />
-          <Route path="*" element={<Navigate to="/404" replace />} />
+          <Route path="/page not found" element={<PageNotFound />} />
+          <Route path="*" element={<Navigate to="/page not found" replace />} />
 
 
 
