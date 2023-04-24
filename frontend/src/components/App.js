@@ -66,6 +66,7 @@ const App = (props) => {
           <Route path="/settings" element={<Settings />} />
           <Route path="/:username/favorites" element={<ProfileFavorites />} />
           <Route path="/:username" element={<Profile />} />
+          <Route path="/product" element={<PageNotFound />} />
           <Route path="*" element={<PageNotFound />} />
 
 
