@@ -11,7 +11,7 @@ import Profile from "./Profile";
 import ProfileFavorites from "./ProfileFavorites";
 import Register from "./Register";
 import Settings from "./Settings";
-import { Route, Routes, useNavigate, Navigate } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import PageNotFound from './PageNotFound';
 
 const mapStateToProps = (state) => {
@@ -58,19 +58,16 @@ const App = (props) => {
         <Routes>
 
           <Route exact path="/" element={<Home />} />
+
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/editor/:slug" element={<Editor />} />
           <Route path="/editor" element={<Editor />} />
           <Route path="/item/:id" element={<Item />} />
           <Route path="/settings" element={<Settings />} />
-          <Route path="/:username/favorites" element={<ProfileFavorites />} />
-          <Route path="/:username" element={<Profile />} />
-          <Route path="/product" element={<PageNotFound />} />
+          <Route path="/user/:username/favorites" element={<ProfileFavorites />} />
+          <Route path="/user/:username" element={<Profile />} />
           <Route path="*" element={<PageNotFound />} />
-
-
-
         </Routes>
       </div>
     );
