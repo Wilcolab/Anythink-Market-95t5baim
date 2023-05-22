@@ -4,7 +4,7 @@
 // Path: backend/utils/getUserAvatar.js.
 // the function should return base64 data URL of a randomly generated canvas based on the user's information.
 
-export const getUserAvatar = (user) => {
+export const getUserAvatar = (username) => {
     const canvas = document.createElement('canvas');
     canvas.width = 200;
     canvas.height = 200;
