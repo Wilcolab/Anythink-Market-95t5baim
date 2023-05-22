@@ -13,6 +13,6 @@ export const getUserAvatar = (user) => {
     ctx.fillRect(0, 0, canvas.width, canvas.height);
     ctx.fillStyle = 'rgb(0, 0, 0)';
     ctx.font = '100px Arial';
-    ctx.fillText(user.name[0] + user.name[1], 10, 150);
+    ctx.fillText(username[0] + username[1], 10, 150);
     return canvas.toDataURL();
     }
